@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application SQLite</string>
+    <string name="authentification">Authentification</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="hintLogin">Enter your email here</string>
+    <string name="bLogin">Login</string>
+    <string name="bSignUp">Sign Up</string>
 </resources>
