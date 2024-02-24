@@ -11,4 +11,7 @@
     <string name="tvEmail2">Email</string>
     <string name="tvPassword2">Password</string>
     <string name="bValider2">Valider</string>
+    <string name="bAjouter">Ajouter</string>
+    <string name="bModifier">Modifier</string>
+    <string name="bSupprimer">Supprimer</string>
 </resources>

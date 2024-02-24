@@ -25,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
 
+        bLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+            }
+        });
+
         bSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
