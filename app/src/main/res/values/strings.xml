@@ -6,4 +6,9 @@
     <string name="hintLogin">Enter your email here</string>
     <string name="bLogin">Login</string>
     <string name="bSignUp">Sign Up</string>
+    <string name="tvSignUp">Sign Up</string>
+    <string name="tvName2">Name</string>
+    <string name="tvEmail2">Email</string>
+    <string name="tvPassword2">Password</string>
+    <string name="bValider2">Valider</string>
 </resources>
