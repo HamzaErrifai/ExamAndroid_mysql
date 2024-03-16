@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         bLogin = findViewById(R.id.bLogin);
         bSignUp = findViewById(R.id.bSignUp);
 
+
         DatabaseHandler db = new DatabaseHandler(this);
 
         bLogin.setOnClickListener(new View.OnClickListener() {

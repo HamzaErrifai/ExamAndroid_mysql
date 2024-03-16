@@ -14,4 +14,8 @@
     <string name="bAjouter">Ajouter</string>
     <string name="bModifier">Modifier</string>
     <string name="bSupprimer">Supprimer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Calculatrice">Calculatrice</string>
+
 </resources>
