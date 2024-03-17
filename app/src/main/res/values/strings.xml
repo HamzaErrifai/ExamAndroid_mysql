@@ -51,9 +51,14 @@
     <string name="five">5</string>
     <string name="six">6</string>
     <string name="minus">-</string>
-    <string name="item1">Standard</string>
-    <string name="item2">Scientifique</string>
-    <string name="item3">Convertisseur</string>
-    <string name="item3_1">Devise</string>
-    <string name="item3_2">Température</string>
+
+    <!--Related to calculatrice -->
+    <string name="temperature_title">Température</string>
+    <string name="celsius">Celsius</string>
+    <string name="farenheit">Farenheit</string>
+    <string name="kelvin">Kelvin</string>
+    <string name="convert">Convert</string>
+
+
+
 </resources>

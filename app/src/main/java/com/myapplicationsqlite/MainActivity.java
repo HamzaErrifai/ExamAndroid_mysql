@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
     private DrawerLayout drawerLayout;
     EditText etLogin, etPassword;
-    Button bLogin, bSignUp, bCalculatrice;
+    Button bLogin, bSignUp, bCalculatrice, bTemperature;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
         bLogin = findViewById(R.id.bLogin);
         bSignUp = findViewById(R.id.bSignUp);
         bCalculatrice = findViewById(R.id.bCalculatrice);
+        bTemperature = findViewById(R.id.bTemperature);
 
         DatabaseHandler db = new DatabaseHandler(this);
 
@@ -70,6 +71,12 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, CalculatorActivity.class));
+            }
+        });
+        bTemperature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TemperatureActivity.class));
             }
         });
 
