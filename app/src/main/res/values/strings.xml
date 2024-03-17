@@ -15,6 +15,7 @@
     <string name="bModifier">Modifier</string>
     <string name="bSupprimer">Supprimer</string>
 
+    <string name="liste_utilisateurs">Liste Utilisateurs</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Calculatrice">Calculatrice</string>
     <string name="open_nav">Open nav bar</string>
@@ -58,7 +59,6 @@
     <string name="farenheit">Farenheit</string>
     <string name="kelvin">Kelvin</string>
     <string name="convert">Convert</string>
-
 
 
 </resources>
