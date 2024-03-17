@@ -25,7 +25,6 @@ public class MainActivityAffichage extends AppCompatActivity {
 
         for (Client client: clientList) {
             dataList += client.toString();
-
         }
         tvAffichage.setText(dataList);
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application SQLite</string>
+    <string name="app_name">Exam Android</string>
     <string name="authentification">Authentification</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -14,10 +14,46 @@
     <string name="bAjouter">Ajouter</string>
     <string name="bModifier">Modifier</string>
     <string name="bSupprimer">Supprimer</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Calculatrice">Calculatrice</string>
     <string name="open_nav">Open nav bar</string>
     <string name="close_nav">Close nav bar</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!--Related to calculatrice -->
 
+    <string name="empty" />
+    <string name="Clear">C</string>
+    <string name="del">del</string>
+    <string name="equal">=</string>
+    <string name="point">.</string>
+    <string name="zero">0</string>
+    <string name="plus">+</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="percent">%</string>
+    <string name="negation">+\/-</string>
+    <string name="one">1</string>
+    <string name="slash">/</string>
+    <string name="multiplication">x</string>
+    <string name="nine">9</string>
+    <string name="eight">8</string>
+    <string name="seven">7</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="minus">-</string>
+    <string name="item1">Standard</string>
+    <string name="item2">Scientifique</string>
+    <string name="item3">Convertisseur</string>
+    <string name="item3_1">Devise</string>
+    <string name="item3_2">Température</string>
 </resources>

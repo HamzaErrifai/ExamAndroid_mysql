@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplicationSQLite"
         tools:targetApi="31">
         <activity
+            android:name=".CalculatorActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityAffichage"
             android:exported="false" />
         <activity
