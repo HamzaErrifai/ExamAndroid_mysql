@@ -38,8 +38,8 @@
                     android:layout_width="180dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:inputType="numberSigned|numberDecimal"
                     android:ems="10"
-                    android:inputType="text"
                     android:text="@string/zero"
                     android:textSize="24sp" />
 
@@ -87,8 +87,8 @@
                     android:layout_width="180dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:inputType="numberSigned|numberDecimal"
                     android:ems="10"
-                    android:inputType="text"
                     android:text="@string/zero"
                     android:textSize="24sp" />
 
@@ -100,7 +100,6 @@
 
                     <RadioButton
                         android:id="@+id/outputCelsius"
-                        android:checked="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:tag="Celsius"
@@ -109,6 +108,7 @@
 
                     <RadioButton
                         android:id="@+id/outputFarenheit"
+                        android:checked="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:tag="Farenheit"
