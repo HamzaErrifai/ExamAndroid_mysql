@@ -4,16 +4,16 @@
     tools:showIn = "navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/logout"
+        <item android:id="@+id/nav_logout"
             android:icon="@drawable/nav_logout"
             android:title="Logout"/>
-        <item android:id="@+id/calculatrice"
+        <item android:id="@+id/nav_calculatrice"
             android:icon="@drawable/nav_calculatrice"
             android:title="Calculatrice"/>
-        <item android:id="@+id/temperature"
+        <item android:id="@+id/nav_temperature"
             android:icon="@drawable/nav_temperature"
             android:title="Temperature"/>
-        <item android:id="@+id/afficher"
+        <item android:id="@+id/nav_afficher"
             android:icon="@drawable/nav_afficher"
             android:title="Afficher"/>
     </group>
