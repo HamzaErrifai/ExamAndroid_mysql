@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:baselineAligned="false"
     android:orientation="vertical"
+    android:padding="1mm"
     tools:context=".CustomListView">
+
 
     <TextView
         android:id="@+id/itemName"
