@@ -36,7 +36,17 @@ public class MainActivitySignUp extends AppCompatActivity {
                 //db.addClient(new Client(1, "karim", "karim2@gmail.com", "123456"));
                 if(!etName2.getText().toString().isEmpty() && !etEmail2.getText().toString().isEmpty() && !etPassword2.getText().toString().isEmpty()){
                     Client client = new Client(etName2.getText().toString(), etEmail2.getText().toString(), etPassword2.getText().toString());
-                    db.addClient(client);
+                    long x = db.addClient(client);
+                    if(x != -1){
+                        Toast.makeText(MainActivitySignUp.this, "User Created", Toast.LENGTH_LONG).show();
+                        Intent myIntent = new Intent(MainActivitySignUp.this, MainActivity.class);
+                        myIntent.putExtra("email",etEmail2.getText().toString());
+                        myIntent.putExtra("password",etPassword2.getText().toString());
+                        startActivity(myIntent);
+                        //startActivity(new Intent(MainActivitySignUp.this, MainActivity.class)); // redirect to mainActivity
+                    }
+                    else
+                        Toast.makeText(MainActivitySignUp.this, "Your email does already exist!", Toast.LENGTH_LONG).show();
                     Log.d("Insertion: ", "Inserting ..." + client.toString());
                 }else{
                     Toast.makeText(MainActivitySignUp.this, "Invalid input", Toast.LENGTH_LONG).show();

@@ -80,7 +80,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return clientList;
     }
 
-    public void addClient(Client client) {
+    public long addClient(Client client) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -91,6 +91,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         long x = db.insert(TABLE_CLIENT, null, values);
         db.close();
+        return x;
     }
 
 }

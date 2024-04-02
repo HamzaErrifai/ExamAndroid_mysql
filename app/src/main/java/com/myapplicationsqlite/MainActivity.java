@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
     private DrawerLayout drawerLayout;
+    DatabaseHandler db;
     EditText etLogin, etPassword;
     Button bLogin, bSignUp, bCalculatrice, bTemperature;
 
@@ -54,20 +55,12 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
         bCalculatrice = findViewById(R.id.bCalculatrice);
         bTemperature = findViewById(R.id.bTemperature);
 
-        DatabaseHandler db = new DatabaseHandler(this);
+        db = new DatabaseHandler(this);
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()){
-                    Client clientByEmail = db.getClient(etLogin.getText().toString());
-                    if(clientByEmail.getPassword().equals(etPassword.getText().toString()))
-                        startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
-                    else
-                        Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_LONG).show();
-                }
-                else
-                    Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_LONG).show();
+                login();
             }
         });
 
@@ -90,6 +83,27 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             }
         });
 
+        Intent myIntent = getIntent();
+        if(myIntent!=null){
+            String emailFromSignUp = myIntent.getStringExtra("email");
+            String passwordFromSignUp= myIntent.getStringExtra("password");
+            etLogin.setText(emailFromSignUp);
+            etPassword.setText(passwordFromSignUp);
+            login();
+        }
+
+    }
+
+    private void login(){
+        if(!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()){
+            Client clientByEmail = db.getClient(etLogin.getText().toString());
+            if(clientByEmail.getPassword().equals(etPassword.getText().toString()))
+                startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+            else
+                Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_LONG).show();
+        }
+        else
+            Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_LONG).show();
     }
 
 //    @Override
