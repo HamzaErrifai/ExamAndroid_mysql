@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyApplicationSQLite"
         tools:targetApi="31">
         <activity
+            android:name=".AddClientActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomListView"
             android:exported="false" />
         <activity

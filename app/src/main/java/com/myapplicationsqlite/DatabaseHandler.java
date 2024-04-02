@@ -88,10 +88,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("name", client.getName());
         values.put("email", client.getEmail());
         values.put("password", client.getPassword());
-
         long x = db.insert(TABLE_CLIENT, null, values);
         db.close();
         return x;
+    }
+
+    public void deleteClient(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CLIENT, "email=?", new String[]{email});
+        db.close();
     }
 
 }

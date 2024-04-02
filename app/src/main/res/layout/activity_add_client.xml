@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:fontFamily="@font/aclonica"
-        android:text="@string/tvSignUp"
+        android:text="@string/add_Client"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:hint="Saisissez votre Nom"
+        android:hint="Saisissez votre nom"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +104,7 @@
         app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword2" />
+
     <Button
         android:id="@+id/bAnnuler"
         android:layout_width="wrap_content"

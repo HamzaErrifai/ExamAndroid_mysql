@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
 
         db = new DatabaseHandler(this);
 
+
+
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,15 +85,20 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             }
         });
 
+
         Intent myIntent = getIntent();
-        if(myIntent!=null){
+        if(myIntent.getExtras()!=null){
             String emailFromSignUp = myIntent.getStringExtra("email");
             String passwordFromSignUp= myIntent.getStringExtra("password");
             etLogin.setText(emailFromSignUp);
             etPassword.setText(passwordFromSignUp);
             login();
         }
-
+        /*For debuging purposes*/
+//        etLogin.setText("hamza@gmail.com");
+//        etPassword.setText("12345");
+//        login();
+        /*TODO: delete the 4 lines on top of this line*/
     }
 
     private void login(){

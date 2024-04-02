@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/liste_utilisateurs"
+        android:text="@string/liste_clients"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="34sp"

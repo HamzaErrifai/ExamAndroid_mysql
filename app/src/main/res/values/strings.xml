@@ -2,12 +2,12 @@
     <string name="app_name">Exam Android</string>
     <string name="authentification">Authentification</string>
     <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="hintLogin">Enter your email here</string>
-    <string name="bLogin">Login</string>
-    <string name="bSignUp">Sign Up</string>
-    <string name="tvSignUp">Sign Up</string>
-    <string name="tvName2">Name</string>
+    <string name="password">Mot de passe</string>
+    <string name="hintLogin">Saisissez votre Email</string>
+    <string name="bLogin">s\'authentifier</string>
+    <string name="bSignUp">Inscription</string>
+    <string name="tvSignUp">Inscription</string>
+    <string name="tvName2">Nom</string>
     <string name="tvEmail2">Email</string>
     <string name="tvPassword2">Password</string>
     <string name="bValider2">Valider</string>
@@ -16,10 +16,12 @@
     <string name="bSupprimer">Supprimer</string>
 
     <string name="liste_utilisateurs">Liste Utilisateurs</string>
+    <string name="liste_clients">Liste des Clients</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Calculatrice">Calculatrice</string>
     <string name="open_nav">Open nav bar</string>
     <string name="close_nav">Close nav bar</string>
+    <string name="add_Client">Ajouter un client</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -59,6 +61,7 @@
     <string name="farenheit">Farenheit</string>
     <string name="kelvin">Kelvin</string>
     <string name="convert">Convert</string>
+    <string name="annuler">Annuler</string>
 
 
 </resources>
