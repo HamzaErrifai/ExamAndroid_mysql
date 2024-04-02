@@ -67,21 +67,21 @@ public class AddClientActivity extends AppCompatActivity {
                     if (mode.equals("add")) {
                         long x = db.addClient(client);
                         if (x != -1) {
-                            Toast.makeText(AddClientActivity.this, "Client créé", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddClientActivity.this, "Client créé", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(AddClientActivity.this, MainActivityAffichage.class)); // redirect to mainActivity
                         } else
-                            Toast.makeText(AddClientActivity.this, "Ton email existe déjà!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddClientActivity.this, "Ton email existe déjà!", Toast.LENGTH_SHORT).show();
                     }
                     //edit
                     else {
                         db.updateClient(client, originalEmail);
-                        Toast.makeText(AddClientActivity.this, "Client modifié", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddClientActivity.this, "Client modifié", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AddClientActivity.this, MainActivityAffichage.class)); // redirect to mainActivity
 
                     }
 
                 } else {
-                    Toast.makeText(AddClientActivity.this, "Données invalides", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddClientActivity.this, "Données invalides", Toast.LENGTH_SHORT).show();
                 }
 
             }

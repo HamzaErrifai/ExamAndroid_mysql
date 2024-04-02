@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             login();
         }
         /*For debuging purposes*/
-        etLogin.setText("hamza@gmail.com");
-        etPassword.setText("12345");
-        login();
+//        etLogin.setText("hamza@gmail.com");
+//        etPassword.setText("12345");
+//        login();
         /*TODO: delete the 4 lines on top of this line*/
     }
 
@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             if(clientByEmail.getPassword().equals(etPassword.getText().toString()))
                 startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
             else
-                Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_SHORT).show();
         }
         else
-            Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_SHORT).show();
     }
 
 //    @Override

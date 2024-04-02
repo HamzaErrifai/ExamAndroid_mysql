@@ -62,6 +62,7 @@
     <string name="kelvin">Kelvin</string>
     <string name="convert">Convert</string>
     <string name="annuler">Annuler</string>
+    <string name="password_hint">Saisissez votre mot de passe</string>
 
 
 </resources>

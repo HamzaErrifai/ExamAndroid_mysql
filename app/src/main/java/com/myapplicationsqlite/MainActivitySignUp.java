@@ -39,7 +39,7 @@ public class MainActivitySignUp extends AppCompatActivity {
                     Client client = new Client(etName2.getText().toString(), etEmail2.getText().toString(), etPassword2.getText().toString());
                     long x = db.addClient(client);
                     if(x != -1){
-                        Toast.makeText(MainActivitySignUp.this, "User Created", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivitySignUp.this, "User Created", Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(MainActivitySignUp.this, MainActivity.class);
                         myIntent.putExtra("email",etEmail2.getText().toString());
                         myIntent.putExtra("password",etPassword2.getText().toString());
@@ -47,10 +47,10 @@ public class MainActivitySignUp extends AppCompatActivity {
                         //startActivity(new Intent(MainActivitySignUp.this, MainActivity.class)); // redirect to mainActivity
                     }
                     else
-                        Toast.makeText(MainActivitySignUp.this, "Your email does already exist!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivitySignUp.this, "Your email does already exist!", Toast.LENGTH_SHORT).show();
                     Log.d("Insertion: ", "Inserting ..." + client.toString());
                 }else{
-                    Toast.makeText(MainActivitySignUp.this, "Invalid input", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivitySignUp.this, "Invalid input", Toast.LENGTH_SHORT).show();
                 }
 
             }
