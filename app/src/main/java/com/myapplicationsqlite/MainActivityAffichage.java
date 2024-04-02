@@ -65,6 +65,17 @@ public class MainActivityAffichage extends AppCompatActivity {
                 startActivity(new Intent(MainActivityAffichage.this, AddClientActivity.class));
             }
         });
+        bModifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String selectedEmail = emails[selectedClientIndex];
+                String selectedName = names[selectedClientIndex];
+                Intent myIntent = new Intent(MainActivityAffichage.this, AddClientActivity.class);
+                myIntent.putExtra("name",selectedName);
+                myIntent.putExtra("email",selectedEmail);
+                startActivity(myIntent);
+            }
+        });
         bSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

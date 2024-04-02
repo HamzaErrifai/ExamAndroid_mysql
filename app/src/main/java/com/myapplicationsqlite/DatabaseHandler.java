@@ -49,12 +49,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[]{"id", "name", "email", "password"},
                 "email=?", new String[]{email},
                 null, null, null, null);
-        if (cursor != null && cursor.getCount()>0) {
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             Client client = new Client(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
             return client;
         }
-        return new Client("","","");
+        return new Client("", "", "");
 
     }
 
@@ -93,7 +93,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return x;
     }
 
-    public void deleteClient(String email){
+    public void updateClient(Client client, String originalClientEmail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", client.getName());
+        values.put("email", client.getEmail());
+
+        db.update(TABLE_CLIENT, values, "email=?", new String[]{originalClientEmail});
+        db.close();
+    }
+
+    public void deleteClient(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CLIENT, "email=?", new String[]{email});
         db.close();

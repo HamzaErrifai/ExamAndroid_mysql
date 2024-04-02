@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
             login();
         }
         /*For debuging purposes*/
-//        etLogin.setText("hamza@gmail.com");
-//        etPassword.setText("12345");
-//        login();
+        etLogin.setText("hamza@gmail.com");
+        etPassword.setText("12345");
+        login();
         /*TODO: delete the 4 lines on top of this line*/
     }
 
