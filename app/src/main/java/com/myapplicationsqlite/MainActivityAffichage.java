@@ -21,8 +21,6 @@ public class MainActivityAffichage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_affichage);
-//        String[] names = {"Hamza", "Ahmed", "Imad"};
-//        String[] emails = {"Hamza@gmail.com", "Ahmed@gmail.com", "Imad@gmail.com"};
 
         lvUsers = findViewById(R.id.list_users);
 

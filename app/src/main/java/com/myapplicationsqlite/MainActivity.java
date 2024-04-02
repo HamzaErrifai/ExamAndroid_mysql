@@ -8,10 +8,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -57,7 +59,15 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+                if(!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()){
+                    Client clientByEmail = db.getClient(etLogin.getText().toString());
+                    if(clientByEmail.getPassword().equals(etPassword.getText().toString()))
+                        startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+                    else
+                        Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_LONG).show();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -98,6 +98,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="59dp"
+                    android:hint="Enter your password here"
                     android:ems="10"
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"

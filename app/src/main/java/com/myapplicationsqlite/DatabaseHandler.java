@@ -27,7 +27,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String sql = "CREATE TABLE " + TABLE_CLIENT + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT," +
-                "email TEXT," +
+                "email TEXT UNIQUE," +
                 "password TEXT" +
                 ")";
         db.execSQL(sql);
@@ -46,15 +46,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor;
         cursor = db.query(TABLE_CLIENT,
-                new String[] {"id", "name", "email", "password"},
-                "email=?", new String[]{ email },
-                null, null,null,null );
-        if (cursor != null)
+                new String[]{"id", "name", "email", "password"},
+                "email=?", new String[]{email},
+                null, null, null, null);
+        if (cursor != null && cursor.getCount()>0) {
             cursor.moveToFirst();
+            Client client = new Client(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            return client;
+        }
+        return new Client("","","");
 
-        Client client = new Client(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-
-        return client;
     }
 
     public List<Client> getAllClients() {
@@ -67,7 +68,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                Client client =new Client();
+                Client client = new Client();
                 client.setId(cursor.getInt(0));
                 client.setName(cursor.getString(1));
                 client.setEmail(cursor.getString(2));
@@ -88,7 +89,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("email", client.getEmail());
         values.put("password", client.getPassword());
 
-        db.insert(TABLE_CLIENT, null, values);
+        long x = db.insert(TABLE_CLIENT, null, values);
         db.close();
     }
 

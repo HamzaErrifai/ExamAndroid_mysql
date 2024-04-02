@@ -2,11 +2,13 @@ package com.myapplicationsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivitySignUp extends AppCompatActivity {
 
@@ -32,9 +34,14 @@ public class MainActivitySignUp extends AppCompatActivity {
                 Log.d("Insert: ", "Inserting ...");
                 //db.addClient(new Client(1, "youness", "ykhamlichi@gmail.com", "123456"));
                 //db.addClient(new Client(1, "karim", "karim2@gmail.com", "123456"));
-                Client client = new Client(etName2.getText().toString(), etEmail2.getText().toString(), etPassword2.getText().toString());
-                db.addClient(client);
-                Log.d("Insertion: ", "Inserting ..." + client.toString());
+                if(!etName2.getText().toString().isEmpty() && !etEmail2.getText().toString().isEmpty() && !etPassword2.getText().toString().isEmpty()){
+                    Client client = new Client(etName2.getText().toString(), etEmail2.getText().toString(), etPassword2.getText().toString());
+                    db.addClient(client);
+                    Log.d("Insertion: ", "Inserting ..." + client.toString());
+                }else{
+                    Toast.makeText(MainActivitySignUp.this, "Invalid input", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
