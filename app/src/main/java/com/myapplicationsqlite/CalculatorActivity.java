@@ -1,7 +1,10 @@
 package com.myapplicationsqlite;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,9 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, Nameable {
 
     //Calculation Variables
     private Double ans = null;
@@ -36,6 +40,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
+
+        /* Show toolbar + the button to toggle the menu */
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ((MyApp) this.getApplication()).addToolbarControls(this, drawerLayout, myToolbar, navigationView);
 
 
         //Defining our buttons
@@ -124,7 +136,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     public void onClick(View v) {
         //here the order of the ifs is important
-        if (v.getTag().equals("negate")){//add/remove the negation
+        if (v.getTag().equals("negate")) {//add/remove the negation
             if (!bigTv.getText().toString().equals("0")) {
                 if (!bigTv.getText().toString().contains("-"))
                     bigTv.setText("-" + bigTv.getText().toString());
@@ -178,4 +190,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         isEqualActive = false;
     }
 
+    @Override
+    public String getNavName() {
+        return "Calculatrice";
+    }
 }

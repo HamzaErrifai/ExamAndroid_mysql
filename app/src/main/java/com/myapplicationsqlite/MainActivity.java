@@ -1,28 +1,26 @@
 package com.myapplicationsqlite;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
-    private DrawerLayout drawerLayout;
+
     DatabaseHandler db;
+
     EditText etLogin, etPassword;
     Button bLogin, bSignUp, bCalculatrice, bTemperature;
 
@@ -30,18 +28,36 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
-//
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-//
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, myToolbar, R.string.open_nav, R.string.close_nav);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
-//
+
+        /* Show toolbar + the button to toggle the menu */
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, myToolbar, R.string.open_nav, R.string.close_nav);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        /* Show toolbar + the button to toggle the menu */
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Log.i("item :", item.toString());
+                switch (item.toString()){
+                    case "Calculatrice":
+                        startActivity(new Intent(MainActivity.this, CalculatorActivity.class));
+                        break;
+                    case "Temperature":
+                        startActivity(new Intent(MainActivity.this, TemperatureActivity.class));
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+
 //        if (savedInstanceState == null) {
 //           getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatriceFragment()).commit();
 //           //navigationView.setCheckedItem(R.id.nav_calculatrice);
@@ -59,31 +75,10 @@ public class MainActivity extends AppCompatActivity /*implements NavigationView.
 
 
 
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
-            }
-        });
-
-        bSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MainActivitySignUp.class));
-            }
-        });
-        bCalculatrice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CalculatorActivity.class));
-            }
-        });
-        bTemperature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TemperatureActivity.class));
-            }
-        });
+        bLogin.setOnClickListener(v -> login());
+        bSignUp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MainActivitySignUp.class)));
+        bCalculatrice.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CalculatorActivity.class)));
+        bTemperature.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TemperatureActivity.class)));
 
 
         Intent myIntent = getIntent();
