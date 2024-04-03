@@ -84,12 +84,14 @@ public class MainActivitySignUp extends AppCompatActivity implements Nameable {
         View headerView = navigationView.getHeaderView(0);
         TextView tvHeaderUsername = (TextView) headerView.findViewById(R.id.tvHeaderUsername);
         TextView tvHeaderUseremail = (TextView) headerView.findViewById(R.id.tvHeaderUseremail);
-        tvHeaderUsername.setText(((MyApp) this.getApplication()).getCurrentUser().getName());
-        tvHeaderUseremail.setText(((MyApp) this.getApplication()).getCurrentUser().getEmail());
-        //change the login to logout
-        Menu menu = navigationView.getMenu();
-        MenuItem tvMenuLogin = menu.findItem(R.id.nav_login);
-        tvMenuLogin.setTitle("Logout");
+        if(((MyApp) this.getApplication()).getUserIsLoggedIn()){
+            tvHeaderUsername.setText(((MyApp) this.getApplication()).getCurrentUser().getName());
+            tvHeaderUseremail.setText(((MyApp) this.getApplication()).getCurrentUser().getEmail());
+            //change the login to logout
+            Menu menu = navigationView.getMenu();
+            MenuItem tvMenuLogin = menu.findItem(R.id.nav_login);
+            tvMenuLogin.setTitle("Logout");
+        }
         /* set Username and email on header from sidebar */
 
     }
