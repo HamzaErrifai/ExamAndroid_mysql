@@ -67,11 +67,7 @@ public class MainActivity extends AppCompatActivity implements Nameable {
             etPassword.setText(passwordFromSignUp);
             login();
         }
-        /*For debuging purposes*/
-//        etLogin.setText("hamza@gmail.com");
-//        etPassword.setText("12345");
-//        login();
-        /*TODO: delete the 4 lines on top of this line*/
+
     }
 
     private void login(){
@@ -99,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements Nameable {
 
                 /* set Username and email on header from sidebar */
 
-               // startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+                //startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
             }
 
             else
