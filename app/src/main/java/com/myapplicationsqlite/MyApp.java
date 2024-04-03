@@ -2,11 +2,10 @@ package com.myapplicationsqlite;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.MenuItem;
-
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
@@ -15,11 +14,28 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 public class MyApp extends Application {
-    private String someVariable;
+    private Boolean userIsLoggedIn = false;
 
-    public String getSomeVariable() {
-        return someVariable;
+
+    private Client currentUser = null;
+
+
+    public void setCurrentUser(Client currentUser) {
+        this.currentUser = currentUser;
     }
+
+    public Client getCurrentUser() {
+        return currentUser;
+    }
+
+    public Boolean getUserIsLoggedIn() {
+        return userIsLoggedIn;
+    }
+
+    public void setUserIsLoggedIn(Boolean newStatus) {
+        this.userIsLoggedIn = newStatus;
+    }
+
 
     public void addToolbarControls(Activity THIS, DrawerLayout drawerLayout, Toolbar myToolbar, NavigationView navigationView) {
         /* Show toolbar + the button to toggle the menu */
@@ -36,7 +52,7 @@ public class MyApp extends Application {
 
                 switch (item.toString()) {
                     case "Login":
-                        if (!nameClass.getNavName().equals("Login"))
+                        if (!nameClass.getNavName().equals("Login")) if (!getUserIsLoggedIn())
                             startActivity(new Intent(THIS, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         break;
                     case "Calculatrice":
@@ -47,14 +63,26 @@ public class MyApp extends Application {
                         if (!nameClass.getNavName().equals("Temperature"))
                             startActivity(new Intent(THIS, TemperatureActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                         break;
+                    case "Afficher":
+                        if (!nameClass.getNavName().equals("Afficher")) if (getUserIsLoggedIn())
+                            startActivity(new Intent(THIS, MainActivityAffichage.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        else
+                            Toast.makeText(THIS, "Connectez vous s'il vous plaît.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case "Logout":
+                        if (userIsLoggedIn) {
+                            setUserIsLoggedIn(false);
+                            setCurrentUser(null);
+                        }
+
+                        startActivity(new Intent(THIS, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        break;
                 }
                 return false;
             }
         });
     }
 
-    public void setSomeVariable(String someVariable) {
-        this.someVariable = someVariable;
-    }
+
 }
 

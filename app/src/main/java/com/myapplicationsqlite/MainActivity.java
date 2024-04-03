@@ -3,9 +3,12 @@ package com.myapplicationsqlite;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -74,8 +77,31 @@ public class MainActivity extends AppCompatActivity implements Nameable {
     private void login(){
         if(!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()){
             Client clientByEmail = db.getClient(etLogin.getText().toString());
-            if(clientByEmail.getPassword().equals(etPassword.getText().toString()))
-                startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+            if(clientByEmail.getPassword().equals(etPassword.getText().toString())){
+                //Set current user's informations
+                ((MyApp) this.getApplication()).setUserIsLoggedIn(true);
+                ((MyApp) this.getApplication()).setCurrentUser(clientByEmail);
+
+                /* set Username and email on header from sidebar */
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+                View headerView = navigationView.getHeaderView(0);
+                TextView tvHeaderUsername = (TextView) headerView.findViewById(R.id.tvHeaderUsername);
+                TextView tvHeaderUseremail = (TextView) headerView.findViewById(R.id.tvHeaderUseremail);
+
+                tvHeaderUsername.setText(clientByEmail.getName());
+                tvHeaderUseremail.setText(clientByEmail.getEmail());
+
+                //change the login to logout
+                Menu menu = navigationView.getMenu();
+                MenuItem tvMenuLogin = menu.findItem(R.id.nav_login);
+                tvMenuLogin.setTitle("Logout");
+
+                /* set Username and email on header from sidebar */
+
+               // startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+            }
+
             else
                 Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_SHORT).show();
         }

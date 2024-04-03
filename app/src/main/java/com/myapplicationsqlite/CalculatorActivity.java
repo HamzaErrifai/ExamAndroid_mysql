@@ -97,6 +97,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         btnPercent.setOnClickListener(this);
         btnNegate.setOnClickListener(this);
 
+
+        /* set Username and email on header from sidebar */
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView tvHeaderUsername = (TextView) headerView.findViewById(R.id.tvHeaderUsername);
+        TextView tvHeaderUseremail = (TextView) headerView.findViewById(R.id.tvHeaderUseremail);
+        if(((MyApp) this.getApplication()).getUserIsLoggedIn()){
+            tvHeaderUsername.setText(((MyApp) this.getApplication()).getCurrentUser().getName());
+            tvHeaderUseremail.setText(((MyApp) this.getApplication()).getCurrentUser().getEmail());
+            //change the login to logout
+            Menu menu = navigationView.getMenu();
+            MenuItem tvMenuLogin = menu.findItem(R.id.nav_login);
+            tvMenuLogin.setTitle("Logout");
+        }
+        /* set Username and email on header from sidebar */
+
     }
 
     /**

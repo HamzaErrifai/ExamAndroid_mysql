@@ -7,11 +7,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -88,6 +91,21 @@ public class TemperatureActivity extends AppCompatActivity implements Nameable {
                 verifyAndShow();
             }
         });
+
+        /* set Username and email on header from sidebar */
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView tvHeaderUsername = (TextView) headerView.findViewById(R.id.tvHeaderUsername);
+        TextView tvHeaderUseremail = (TextView) headerView.findViewById(R.id.tvHeaderUseremail);
+        if(((MyApp) this.getApplication()).getUserIsLoggedIn()){
+            tvHeaderUsername.setText(((MyApp) this.getApplication()).getCurrentUser().getName());
+            tvHeaderUseremail.setText(((MyApp) this.getApplication()).getCurrentUser().getEmail());
+            //change the login to logout
+            Menu menu = navigationView.getMenu();
+            MenuItem tvMenuLogin = menu.findItem(R.id.nav_login);
+            tvMenuLogin.setTitle("Logout");
+        }
+        /* set Username and email on header from sidebar */
 
     }
 
