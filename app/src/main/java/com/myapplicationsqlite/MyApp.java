@@ -32,9 +32,13 @@ public class MyApp extends Application {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Nameable nameClass = (Nameable) THIS;
                 Log.i("item :", item.toString());
-                Log.i("THIS", nameClass.getNavName());
+                Log.i("THIS NAMECLASS", nameClass.getNavName());
 
                 switch (item.toString()) {
+                    case "Login":
+                        if (!nameClass.getNavName().equals("Login"))
+                            startActivity(new Intent(THIS, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        break;
                     case "Calculatrice":
                         if (!nameClass.getNavName().equals("Calculatrice"))
                             startActivity(new Intent(THIS, CalculatorActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));

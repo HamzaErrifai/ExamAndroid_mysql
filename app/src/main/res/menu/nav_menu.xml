@@ -4,9 +4,9 @@
     tools:showIn = "navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_logout"
+        <item android:id="@+id/nav_login"
             android:icon="@drawable/nav_logout"
-            android:title="Logout"/>
+            android:title="Login"/>
         <item
             android:id="@+id/nav_calculatrice"
             android:icon="@drawable/nav_calculatrice"
