@@ -40,7 +40,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
-
         /* Show toolbar + the button to toggle the menu */
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -48,7 +47,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ((MyApp) this.getApplication()).addToolbarControls(this, drawerLayout, myToolbar, navigationView);
-
+        /* Show toolbar + the button to toggle the menu */
 
         //Defining our buttons
         btn0 = (Button) findViewById(R.id.btn0);

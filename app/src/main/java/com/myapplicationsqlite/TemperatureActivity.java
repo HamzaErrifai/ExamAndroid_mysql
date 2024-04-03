@@ -1,6 +1,8 @@
 package com.myapplicationsqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +13,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class TemperatureActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class TemperatureActivity extends AppCompatActivity implements Nameable {
 
     private RadioGroup rgInput, rgOutput;
     private RadioButton rbInput, rbOutput;
@@ -23,6 +27,15 @@ public class TemperatureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature);
+
+        /* Show toolbar + the button to toggle the menu */
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ((MyApp) this.getApplication()).addToolbarControls(this, drawerLayout, myToolbar, navigationView);
+        /* Show toolbar + the button to toggle the menu */
 
         rgInput = (RadioGroup) findViewById(R.id.rg_input);
         rgOutput = (RadioGroup) findViewById(R.id.rg_output);
@@ -143,5 +156,10 @@ public class TemperatureActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public String getNavName() {
+        return "Temperature";
     }
 }

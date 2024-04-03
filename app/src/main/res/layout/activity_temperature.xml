@@ -1,138 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".TemperatureActivity">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity"
+
+    tools:openDrawer="right"
+
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView6"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/temperature_title"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                tools:context=".TemperatureActivity">
 
-                <EditText
-                    android:id="@+id/inputTemp"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:inputType="numberSigned|numberDecimal"
-                    android:ems="10"
-                    android:text="@string/zero"
-                    android:textSize="24sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <RadioGroup
-                    android:id="@+id/rg_input"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1">
-
-                    <RadioButton
-                        android:id="@+id/inputCelsius"
+                    <TextView
+                        android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tag="Celsius"
-                        android:text="@string/celsius"
-                        android:checked="true"
-                        android:textSize="20sp" />
+                        android:text="@string/temperature_title"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/inputFarenheit"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/inputTemp"
+                                android:layout_width="180dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="numberSigned|numberDecimal"
+                                android:text="@string/zero"
+                                android:textSize="24sp" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_input"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_weight="1">
+
+                                <RadioButton
+                                    android:id="@+id/inputCelsius"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:tag="Celsius"
+                                    android:text="@string/celsius"
+                                    android:textSize="20sp" />
+
+                                <RadioButton
+                                    android:id="@+id/inputFarenheit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:tag="Farenheit"
+                                    android:text="@string/farenheit"
+                                    android:textSize="20sp" />
+
+                                <RadioButton
+                                    android:id="@+id/inputKelvin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:tag="Kelvin"
+                                    android:text="@string/kelvin"
+                                    android:textSize="20sp" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/outputTemp"
+                                android:layout_width="180dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="numberSigned|numberDecimal"
+                                android:text="@string/zero"
+                                android:textSize="24sp" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_output"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_weight="1">
+
+                                <RadioButton
+                                    android:id="@+id/outputCelsius"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:tag="Celsius"
+                                    android:text="@string/celsius"
+                                    android:textSize="20sp" />
+
+                                <RadioButton
+                                    android:id="@+id/outputFarenheit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:tag="Farenheit"
+                                    android:text="@string/farenheit"
+                                    android:textSize="20sp" />
+
+                                <RadioButton
+                                    android:id="@+id/outputKelvin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:tag="Kelvin"
+                                    android:text="@string/kelvin"
+                                    android:textSize="20sp" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/bConvert"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:tag="Farenheit"
-                        android:text="@string/farenheit"
-                        android:textSize="20sp" />
+                        android:text="@string/convert" />
 
-                    <RadioButton
-                        android:id="@+id/inputKelvin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="Kelvin"
-                        android:text="@string/kelvin"
-                        android:textSize="20sp" />
-                </RadioGroup>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/outputTemp"
-                    android:layout_width="180dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:inputType="numberSigned|numberDecimal"
-                    android:ems="10"
-                    android:text="@string/zero"
-                    android:textSize="24sp" />
-
-                <RadioGroup
-                    android:id="@+id/rg_output"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_weight="1">
-
-                    <RadioButton
-                        android:id="@+id/outputCelsius"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="Celsius"
-                        android:text="@string/celsius"
-                        android:textSize="20sp" />
-
-                    <RadioButton
-                        android:id="@+id/outputFarenheit"
-                        android:checked="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="Farenheit"
-                        android:text="@string/farenheit"
-                        android:textSize="20sp" />
-
-                    <RadioButton
-                        android:id="@+id/outputKelvin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="Kelvin"
-                        android:text="@string/kelvin"
-                        android:textSize="20sp" />
-                </RadioGroup>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/bConvert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/convert" />
+        </FrameLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
