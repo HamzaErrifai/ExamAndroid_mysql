@@ -2,7 +2,6 @@ package com.myapplicationsqlite;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements Nameable {
     DatabaseHandler db;
 
     EditText etLogin, etPassword;
-    Button bLogin, bSignUp, bCalculatrice, bTemperature;
+    Button bLogin, bSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements Nameable {
         setContentView(R.layout.activity_main);
 
         /* Show toolbar + the button to toggle the menu */
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -46,23 +43,17 @@ public class MainActivity extends AppCompatActivity implements Nameable {
         etPassword = findViewById(R.id.etPassword);
         bLogin = findViewById(R.id.bLogin);
         bSignUp = findViewById(R.id.bSignUp);
-        bCalculatrice = findViewById(R.id.bCalculatrice);
-        bTemperature = findViewById(R.id.bTemperature);
-
         db = new DatabaseHandler(this);
-
 
 
         bLogin.setOnClickListener(v -> login());
         bSignUp.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, MainActivitySignUp.class)));
-        bCalculatrice.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, CalculatorActivity.class)));
-        bTemperature.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TemperatureActivity.class)));
 
 
         Intent myIntent = getIntent();
-        if(myIntent.getExtras()!=null){
+        if (myIntent.getExtras() != null) {
             String emailFromSignUp = myIntent.getStringExtra("email");
-            String passwordFromSignUp= myIntent.getStringExtra("password");
+            String passwordFromSignUp = myIntent.getStringExtra("password");
             etLogin.setText(emailFromSignUp);
             etPassword.setText(passwordFromSignUp);
             login();
@@ -70,20 +61,20 @@ public class MainActivity extends AppCompatActivity implements Nameable {
 
     }
 
-    private void login(){
-        if(!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()){
+    private void login() {
+        if (!etLogin.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()) {
             Client clientByEmail = db.getClient(etLogin.getText().toString());
-            if(clientByEmail.getPassword().equals(etPassword.getText().toString())){
+            if (clientByEmail.getPassword().equals(etPassword.getText().toString())) {
                 //Set current user's informations
                 ((MyApp) this.getApplication()).setUserIsLoggedIn(true);
                 ((MyApp) this.getApplication()).setCurrentUser(clientByEmail);
 
                 /* set Username and email on header from sidebar */
-                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                NavigationView navigationView = findViewById(R.id.nav_view);
 
                 View headerView = navigationView.getHeaderView(0);
-                TextView tvHeaderUsername = (TextView) headerView.findViewById(R.id.tvHeaderUsername);
-                TextView tvHeaderUseremail = (TextView) headerView.findViewById(R.id.tvHeaderUseremail);
+                TextView tvHeaderUsername = headerView.findViewById(R.id.tvHeaderUsername);
+                TextView tvHeaderUseremail = headerView.findViewById(R.id.tvHeaderUseremail);
 
                 tvHeaderUsername.setText(clientByEmail.getName());
                 tvHeaderUseremail.setText(clientByEmail.getEmail());
@@ -95,13 +86,10 @@ public class MainActivity extends AppCompatActivity implements Nameable {
 
                 /* set Username and email on header from sidebar */
 
-                //startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
-            }
-
-            else
+                startActivity(new Intent(MainActivity.this, MainActivityAffichage.class));
+            } else
                 Toast.makeText(MainActivity.this, "Utilisateur non trouvé", Toast.LENGTH_SHORT).show();
-        }
-        else
+        } else
             Toast.makeText(MainActivity.this, "Merci de remplir les champs", Toast.LENGTH_SHORT).show();
     }
 
